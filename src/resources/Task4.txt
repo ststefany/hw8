@@ -1,0 +1,37 @@
+import java.io.filewriter;
+import java.io.ioexception;
+import java.nio.charset.standardcharsets;
+import java.nio.file.files;
+import java.nio.file.paths;
+import java.util.stream.stream;
+
+public class task4 {
+    public static void main(string[] args) {
+        task4.iflongtolowercase();
+    }
+
+    public static void iflongtolowercase() {
+        stringbuffer buffer = new stringbuffer();
+
+        try (stream<string> stream = files.lines(paths.get("src/task4.java"), standardcharsets.utf_8)) {
+            stream.foreach(s -> {
+                string[] strings = s.split(" ");
+                for (int i = 0; i < strings.length; i++) {
+                    if (strings[i].length() > 2) strings[i] = strings[i].tolowercase();
+                    buffer.append(strings[i]);
+                    if (i == strings.length-1)
+                        buffer.append("\n");
+                        else buffer.append(" ");
+                }
+            });
+        } catch (ioexception e) {
+            e.printstacktrace();
+        }
+
+        try (filewriter writer = new filewriter("src/resources/task4.txt")) {
+            writer.write(buffer.tostring());
+        } catch (ioexception e) {
+            e.printstacktrace();
+        }
+    }
+}
