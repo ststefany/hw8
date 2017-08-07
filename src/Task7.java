@@ -27,15 +27,19 @@ public class Task7 {
 
         try (Stream<String> stream = Files.lines(Paths.get("src/resources/Task7.txt"), StandardCharsets.UTF_8)) {
             stream.forEach(buffer::append);
-            Matcher matcher = pattern.matcher(buffer.toString());
+            result = buffer.toString();
+            Matcher matcher = pattern.matcher(result);
             while (matcher.find()) {
                 counter++;
             }
+
+            if (counter <= 0) return;
+
             counter = (counter % 2 == 0) ? counter : counter - 1;
-            System.out.println(result);
-            matcher.reset();
-            matcher = pattern.matcher(buffer.toString());
+            matcher.reset(result);
+
             for (int i = 0; i < counter; i++) {
+                matcher.find();
                 result = result.replace(matcher.group(), "");
             }
         } catch (IOException e) {
@@ -48,6 +52,4 @@ public class Task7 {
             e.printStackTrace();
         }
     }
-
-
 }
