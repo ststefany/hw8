@@ -1,4 +1,4 @@
-package Task6;
+package task6;
 
 public enum Types {
     DOUBLE, SYMBOL, STRING, INTEGER
