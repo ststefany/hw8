@@ -24,7 +24,7 @@ import java.util.Map;
 
 
             public static void main(String[] args) {
-                writeDataInFile(map, new File("src/resources/Task13"));
+                writeDataInFile(map, new File("src/resources/Task13.txt"));
             }
 
             static void writeDataInFile(Map<String, String > map, File file) {
