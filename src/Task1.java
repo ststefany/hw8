@@ -23,6 +23,7 @@ public class Task1 implements TaskInterface {
         return true;
     }
 
+    //Why static?
     private static String fillFile(String stringPath) {
         Random random = new Random();
         try (FileWriter writer = new FileWriter(stringPath, true)) {
@@ -35,11 +36,14 @@ public class Task1 implements TaskInterface {
         return stringPath;
     }
 
+    //Why static again?
     private static List<Integer> sortFile(String stringPath) {
         List<Integer> result = new ArrayList<>();
+        //is there a reason, why you specify charset? Besides, UTF-8 is default charset
         try (Stream<String> stream = Files.lines(Paths.get(stringPath), StandardCharsets.UTF_8)) {
             result = stream.map(Integer::parseInt)
                     .sorted().collect(Collectors.toList());
+            //What is reason of deleting file? Besides, FileWriter appends to the end of file, it can be used to rewrite the whole file
             Files.delete(Paths.get(stringPath));
         } catch (IOException e) {
             e.printStackTrace();
