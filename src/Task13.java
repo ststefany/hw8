@@ -1,6 +1,6 @@
 /*Сохранить в файл, связанный с выходным потоком, записи о телефонах и их владельцах. Вывести в
 файл записи, телефоны которых начинаются на k и на j.*/
-package task13;
+import interfaces.TaskInterface;
 
 import java.io.FileOutputStream;
 import java.nio.file.Files;
@@ -9,7 +9,7 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
-        public class Task13 {
+        public class Task13 implements TaskInterface {
             static private Map<String, String> map = new HashMap<>();
 
 
@@ -23,13 +23,14 @@ import java.util.Map;
             }
 
 
-            public static void main(String[] args) {
-                writeDataInFile(map, new File("src/resources/Task13.txt"));
+            public Boolean complete(String stringPath) {
+                writeDataInFile(map, stringPath);
+                return true;
             }
 
-            static void writeDataInFile(Map<String, String > map, File file) {
+            private static void writeDataInFile(Map<String, String > map, String stringPath) {
 
-                try(FileOutputStream stream = new FileOutputStream(file)) {
+                try(FileOutputStream stream = new FileOutputStream(new File(stringPath))) {
                     System.setOut(new PrintStream(stream));
                     System.out.println("Owner name      Phone");
                     for (Map.Entry<String, String> entry : map.entrySet()) {

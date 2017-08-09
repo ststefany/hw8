@@ -3,6 +3,7 @@ package task9;
 //Comment sample
 
 import helpers.StringToFileWriter;
+import interfaces.TaskInterface;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,22 +12,21 @@ import java.util.regex.Pattern;
  * Documentation comments sample
  **/
 
-public class Task9 {
+public class Task9 implements TaskInterface {
 
-    private static final String PATH = "src/task9/Task9.java";
 
-    public static void deleteAllComments() {
-        String result = helpers.FileDataToStringMapper.map(PATH);
+    public Boolean complete(String stringPath) {
+        String result = helpers.FileDataToStringMapper.map(stringPath);
         if (result == null || result.isEmpty()) {
             System.err.println("File is empty");
-            return;}
+            return false;}
 
         Pattern pattern = Pattern.compile(Patterns.COMMENTS_PATTERN); //stupid comment
         Matcher matcher = pattern.matcher(result);
         while (matcher.find()){
             result = result.replace(matcher.group(), "");}
-        StringToFileWriter.write(PATH, result);
-
+        StringToFileWriter.write(stringPath, result);
+        return true;
     }
 
 }

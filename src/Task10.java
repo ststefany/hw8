@@ -1,24 +1,20 @@
 /*Прочитать строки из файла и поменять местами первое и последнее слова в каждой строке.*/
 
+import com.sun.javafx.tk.Toolkit;
 import helpers.FileDataToStringMapper;
+import interfaces.TaskInterface;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Task10 {
-    private static final String PATH = "src/Task10.java";
+public class Task10 implements TaskInterface{
 
-    public static void main(String[] args) {
-        switchFirstAndLastWordInLine();
-    }
+    public Boolean complete (String stringPath){
 
-
-    public static void switchFirstAndLastWordInLine(){
-
-        String result = FileDataToStringMapper.map(PATH);
+        String result = FileDataToStringMapper.map(stringPath);
         if (result == null || result.isEmpty()) {
             System.err.println("File contains no data.");
-            return;
+            return false;
         }
         System.out.println(result);
         String[] strings = result.split("\n");
@@ -48,7 +44,7 @@ public class Task10 {
         }
 
         System.out.println(buffer);
-
+        return true;
     }
 
 }

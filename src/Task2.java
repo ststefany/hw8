@@ -1,3 +1,5 @@
+import interfaces.TaskInterface;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -5,12 +7,16 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-public class Task2 {
+/*2. Прочитать текст Java-программы и все слова public в объявлении атрибутов и методов класса
+заменить на слово private.*/
 
-    public void changePublicToPrivate() {
+public class Task2 implements TaskInterface {
+
+    @Override
+    public Boolean complete(String stringPath) {
                     StringBuffer buffer = new StringBuffer();
 
-        try (Stream<String> stream = Files.lines(Paths.get("src/Task2.java"), StandardCharsets.UTF_8)
+        try (Stream<String> stream = Files.lines(Paths.get(stringPath), StandardCharsets.UTF_8)
         ) {
             stream.forEach(s -> {
                 String z = s.replace("public", "private");
@@ -29,5 +35,6 @@ public class Task2 {
         catch (IOException e) {
             e.printStackTrace();
         }
+        return true;
     }
 }

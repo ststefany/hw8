@@ -2,15 +2,38 @@
 сохранить m последних слов в каждой из последних n строк.*/
 
 import helpers.FileDataToStringMapper;
+import interfaces.TaskInterface;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Task11 {
+public class Task11 implements TaskInterface {
 
-    public static String saveMWordsInNLines(int m, int n, String stringPath) {
+
+    public String complete(String stringPath) {
+        int words = 0;
+        int lines = 0;
+        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            System.out.println("How many last words would you like to find?");
+            words = Integer.parseInt(reader.readLine());
+            System.out.println("How many last lines would you like to parse?");
+            lines = Integer.parseInt(reader.readLine());
+        }
+        catch (IOException | NumberFormatException e) {
+            e.printStackTrace();
+            System.out.println("Try again");
+        }
+
+        return saveMWordsInNLines(words,lines,stringPath);
+    }
+
+
+    static String saveMWordsInNLines(int m, int n, String stringPath) {
         StringBuilder builder = new StringBuilder();
         Pattern word = Pattern.compile("[а-яА-ЯёЁa-zA-Z]+");
 

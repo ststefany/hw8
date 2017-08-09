@@ -4,15 +4,13 @@
 
 import helpers.FileDataToStringMapper;
 import helpers.MatrixFromFileReader;
+import interfaces.TaskInterface;
 
 import java.util.Arrays;
 
-public class Task15 {
-    public static void main(String[] args) {
-        complete("src/resources/Task15Input.txt");
-    }
+public class Task15 implements TaskInterface {
 
-    public static int[][] complete(String stringPath) {
+    public int[][] complete(String stringPath) {
         return turnMatrixFor90Degrees(saveSquareMatrixAsArray(stringPath));
     }
 

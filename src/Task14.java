@@ -4,12 +4,13 @@
 
 import helpers.FileDataToStringMapper;
 import helpers.MatrixFromFileReader;
+import interfaces.TaskInterface;
 
 import java.util.Arrays;
 
-public class Task14 {
+public class Task14 implements TaskInterface{
 
-    public static int[][] complete(String stringPath) {
+    public int[][] complete(String stringPath) {
         int[][] result = saveSquareMatrixAsArray(stringPath);
         transMatrix(result);
         return result;

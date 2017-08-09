@@ -1,4 +1,0 @@
-Owner name      Phone
-John      k3j
-Lucas      j
-Paul      jy

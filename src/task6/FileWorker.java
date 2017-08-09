@@ -1,5 +1,6 @@
-package task6;/*Файл содержит символы, слова, целые числа и числа с плавающей запятой. Определить все данные,
-тип которых вводится из командной строки.*/
+package task6;
+
+import helpers.FileDataToStringMapper;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,18 +13,14 @@ import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 public class FileWorker {
+    String stringPath;
 
-    public static void main(String[] args) {
-        FileWorker worker = new FileWorker();
-        worker.start();
+    FileWorker(String stringPath) {
+        this.stringPath = stringPath;
     }
 
-    public void start() {
-        printAllMatchingData(findPattern(chooseType()));
 
-    }
-
-    private Pattern findPattern(Types type) {
+     Pattern findPattern(Types type) {
         Pattern pattern;
         switch (type) {
             case DOUBLE:
@@ -44,8 +41,8 @@ public class FileWorker {
         return pattern;
     }
 
-    private void printAllMatchingData(Pattern pattern) {
-        String data = getDataFromFile();
+    void printAllMatchingData(Pattern pattern) {
+        String data = FileDataToStringMapper.map(stringPath);
         int counter = 0;
         Matcher matcher = pattern.matcher(data);
         while (matcher.find()) {
@@ -57,18 +54,7 @@ public class FileWorker {
     }
 
 
-    private String getDataFromFile() {
-        StringBuffer buffer = new StringBuffer();
-
-        try (Stream<String> stream = Files.lines(Paths.get("src/Task7/Task7.txt"), StandardCharsets.UTF_8)) {
-            stream.forEach(buffer::append);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return buffer.toString();
-    }
-
-    private Types chooseType() {
+    Types chooseType() {
         System.out.println("Please, write a type of data you are interested in. Available types: ");
         for (Types t : Types.values()) {
             System.out.println(t);

@@ -1,8 +1,9 @@
+import interfaces.TaskInterface;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,40 +11,44 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Task1 {
-    Random random = new Random();
+/*1. Создать и заполнить файл случайными целыми числами. Отсортировать содержимое файла по
+возрастанию.*/
 
-    public static void main(String[] args) {
-        Task1 task1 = new Task1();
-        Path path = Paths.get("src/resources/file.txt");
-        task1.fillFile(path);
-        task1.sortFile(path);
+public class Task1 implements TaskInterface {
+
+    @Override
+    public Boolean complete(String stringPath) {
+        fillFile(stringPath);
+        sortFile(stringPath);
+        return true;
     }
 
-    public Path fillFile(Path path) {
-        try (FileWriter writer = new FileWriter(path.toString(), true)) {
+    private static String fillFile(String stringPath) {
+        Random random = new Random();
+        try (FileWriter writer = new FileWriter(stringPath, true)) {
             for (int i = 0; i < 10; i++) {
                 writer.write(random.nextInt() + "\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return path;
+        return stringPath;
     }
 
-    public List<Integer> sortFile(Path path) {
+    private static List<Integer> sortFile(String stringPath) {
         List<Integer> result = new ArrayList<>();
-        try (Stream<String> stream = Files.lines(Paths.get(path.toString()), StandardCharsets.UTF_8)) {
+        try (Stream<String> stream = Files.lines(Paths.get(stringPath), StandardCharsets.UTF_8)) {
             result = stream.map(Integer::parseInt)
                     .sorted().collect(Collectors.toList());
-            Files.delete(path);
+            Files.delete(Paths.get(stringPath));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        try (FileWriter writer = new FileWriter(path.toString(), true)) {
+        try (FileWriter writer = new FileWriter(stringPath, true)) {
             for (Integer i : result) {
-                writer.append(i + "\n");
+                writer.append(i.toString());
+                writer.append("\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -52,4 +57,5 @@ public class Task1 {
 
         return result;
     }
+
 }

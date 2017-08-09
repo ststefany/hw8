@@ -1,3 +1,5 @@
+import interfaces.TaskInterface;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -5,15 +7,14 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-public class Task3 {
-    public static void main(String[] args) {
-        Task3.createFileWithReverseStrings();
+/*3. Прочитать текст Java-программы и записать в другой файл в обратном порядке символы каждой
+строки.*/
 
-    }
+public class Task3 implements TaskInterface {
 
-    public static void createFileWithReverseStrings() {
+    public Boolean complete(String stringPath) {
         try (Stream<String> stream = Files.lines(Paths.get("src/Task3.java"), StandardCharsets.UTF_8);
-             FileWriter writer = new FileWriter("src/resources/Task3reverse.txt")) {
+             FileWriter writer = new FileWriter(stringPath)) {
 
             StringBuffer s = new StringBuffer();
             stream.forEach(z -> {
@@ -32,5 +33,6 @@ public class Task3 {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return true;
     }
 }
