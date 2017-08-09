@@ -20,9 +20,9 @@ public class Task4 implements TaskInterface {
                 for (int i = 0; i < strings.length; i++) {
                     if (strings[i].length() > 2) strings[i] = strings[i].toLowerCase();
                     buffer.append(strings[i]);
-                    if (i == strings.length-1)
+                    if (i == strings.length - 1)
                         buffer.append("\n");
-                        else buffer.append(" ");
+                    else buffer.append(" ");
                 }
             });
         } catch (IOException e) {

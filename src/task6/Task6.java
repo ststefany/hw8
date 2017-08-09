@@ -7,7 +7,7 @@ import interfaces.TaskInterface;
 
 public class Task6 implements TaskInterface {
 
-    public  Boolean complete(String stringPath) {
+    public Boolean complete(String stringPath) {
         FileWorker fileWorker = new FileWorker(stringPath);
         fileWorker.printAllMatchingData(fileWorker.findPattern(fileWorker.chooseType()));
         return true;

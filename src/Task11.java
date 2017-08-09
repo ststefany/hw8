@@ -14,24 +14,21 @@ import java.util.regex.Pattern;
 
 public class Task11 implements TaskInterface {
 
-
     public String complete(String stringPath) {
         int words = 0;
         int lines = 0;
-        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             System.out.println("How many last words would you like to find?");
             words = Integer.parseInt(reader.readLine());
             System.out.println("How many last lines would you like to parse?");
             lines = Integer.parseInt(reader.readLine());
-        }
-        catch (IOException | NumberFormatException e) {
+        } catch (IOException | NumberFormatException e) {
             e.printStackTrace();
             System.out.println("Try again");
         }
 
-        return saveMWordsInNLines(words,lines,stringPath);
+        return saveMWordsInNLines(words, lines, stringPath);
     }
-
 
     static String saveMWordsInNLines(int m, int n, String stringPath) {
         StringBuilder builder = new StringBuilder();
@@ -39,19 +36,19 @@ public class Task11 implements TaskInterface {
 
         String data = FileDataToStringMapper.map(stringPath);
 
-        if(data == null || data.isEmpty()) {
+        if (data == null || data.isEmpty()) {
             System.err.println("File is empty");
             return null;
         }
 
-
         String[] lines = data.split("\n");
 
-        for (int i = lines.length-n; i < lines.length; i++) {
+        for (int i = lines.length - n; i < lines.length; i++) {
             if (lines[i] == null || lines[i].isEmpty()) {
                 builder.append("...");
                 builder.append("\n");
-                continue;}
+                continue;
+            }
             Matcher matcher = word.matcher(lines[i]);
 
             List<String> words = new ArrayList<>();
@@ -61,15 +58,14 @@ public class Task11 implements TaskInterface {
             }
 
 
-            for (int j = words.size()-m; j < words.size(); j++) {
-                    builder.append(words.get(j));
-                    builder.append(" ");
-                }
+            for (int j = words.size() - m; j < words.size(); j++) {
+                builder.append(words.get(j));
+                builder.append(" ");
+            }
             builder.append("\n");
         }
         System.out.println(builder);
 
         return builder.toString();
     }
-
 }

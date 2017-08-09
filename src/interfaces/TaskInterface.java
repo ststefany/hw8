@@ -1,6 +1,6 @@
 package interfaces;
 
-public interface TaskInterface <T> {
+public interface TaskInterface<T> {
 
     T complete(String stringPath);
 }

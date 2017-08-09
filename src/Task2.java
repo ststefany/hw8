@@ -14,7 +14,7 @@ public class Task2 implements TaskInterface {
 
     @Override
     public Boolean complete(String stringPath) {
-                    StringBuffer buffer = new StringBuffer();
+        StringBuffer buffer = new StringBuffer();
 
         try (Stream<String> stream = Files.lines(Paths.get(stringPath), StandardCharsets.UTF_8)
         ) {
@@ -27,12 +27,11 @@ public class Task2 implements TaskInterface {
             e.printStackTrace();
         }
 
-        try(FileWriter writer = new FileWriter("src/Task2.java")) {
+        try (FileWriter writer = new FileWriter("src/Task2.java")) {
             char[] chars = buffer.toString().toCharArray();
             writer.write(chars);
             writer.flush();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return true;

@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Task16 implements TaskInterface{
+public class Task16 implements TaskInterface {
 
 
     public List<Integer> complete(String string) {
@@ -21,7 +21,7 @@ public class Task16 implements TaskInterface{
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             System.out.println("Enter path to the file: ");
-             stringPath = reader.readLine();
+            stringPath = reader.readLine();
 
             System.out.println("Enter a line to find: ");
             lineToFind = reader.readLine();
@@ -33,15 +33,13 @@ public class Task16 implements TaskInterface{
 
         String data = FileDataToStringMapper.map(stringPath);
 
-        if(data == null || data.isEmpty())
-        {
+        if (data == null || data.isEmpty()) {
             System.err.println("File is empty or doesn't exist");
             return null;
         }
 
 
-        if (!data.contains(lineToFind))
-        {
+        if (!data.contains(lineToFind)) {
             System.out.println("There is no such line in the life");
             return null;
         }
@@ -53,7 +51,7 @@ public class Task16 implements TaskInterface{
                 result.add(i);
         }
 
-        System.out.println("Next lines match given line: " + result+1);
+        System.out.println("Next lines match given line: " + result + 1);
 
         return result;
     }

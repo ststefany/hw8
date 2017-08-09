@@ -2,13 +2,10 @@
 Ввести матрицу в двумерный массив (размер матрицы найти). Вывести исходную матрицу и
 результат ее транспонирования.*/
 
-import helpers.FileDataToStringMapper;
 import helpers.MatrixFromFileReader;
 import interfaces.TaskInterface;
 
-import java.util.Arrays;
-
-public class Task14 implements TaskInterface{
+public class Task14 implements TaskInterface {
 
     public int[][] complete(String stringPath) {
         int[][] result = saveSquareMatrixAsArray(stringPath);
@@ -18,11 +15,11 @@ public class Task14 implements TaskInterface{
 
     private static int[][] saveSquareMatrixAsArray(String stringPath) {
         int[][] matrix = MatrixFromFileReader.read(stringPath, "\\s|\\n");
-        for (int[] a : matrix){
+        for (int[] a : matrix) {
             for (int i : a)
                 System.out.print(i + " ");
-            System.out.println();}
-
+            System.out.println();
+        }
         return matrix;
     }
 
@@ -42,9 +39,6 @@ public class Task14 implements TaskInterface{
             }
             System.out.println();
         }
-
         return resultMatrix;
     }
-
-
 }
