@@ -44,6 +44,7 @@ public class Task16 implements TaskInterface {
             return null;
         }
 
+        //This is not a big deal, but for line separator character it is better to use System.getProperties("line.separator"); instead of "\n"
         String[] lines = data.split("\n");
 
         for (int i = 0; i < lines.length; i++) {

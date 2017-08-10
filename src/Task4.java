@@ -2,7 +2,6 @@ import interfaces.TaskInterface;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
@@ -20,8 +19,11 @@ public class Task4 implements TaskInterface {
                 for (int i = 0; i < strings.length; i++) {
                     if (strings[i].length() > 2) strings[i] = strings[i].toLowerCase();
                     buffer.append(strings[i]);
+                    //please, use curly brackets after "if"
                     if (i == strings.length - 1)
+                        //This is not a big deal, but for line separator character it is better to use System.getProperties("line.separator"); instead of "\n"
                         buffer.append("\n");
+                    //same for "else"
                     else buffer.append(" ");
                 }
             });

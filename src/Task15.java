@@ -14,6 +14,7 @@ public class Task15 implements TaskInterface {
 
     private int[][] saveSquareMatrixAsArray(String stringPath) {
 
+        //This is not a big deal, but for line separator character it is better to use System.getProperties("line.separator"); instead of "\n"
         int[][] matrix = MatrixFromFileReader.read(stringPath, "\n");
 
         for (int[] a : matrix) {

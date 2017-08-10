@@ -2,7 +2,6 @@ import interfaces.TaskInterface;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
@@ -10,6 +9,7 @@ import java.util.stream.Stream;
 студентов, которые имеют средний балл более “7”.*/
 
 public class Task5 implements TaskInterface {
+    //privacy modifiers?
     final static int SURNAME = 0;
     final static int MARK = 1;
 
@@ -20,10 +20,13 @@ public class Task5 implements TaskInterface {
         try (Stream<String> stream = Files.lines(Paths.get(stringPath))) {
             stream.forEach(s -> {
                 String[] student = s.split(",");
+                //if you are already using constants for field indices, why do you use magic numbers for marks?
+                //please, do not omit curly brackets after "if"...
                 if (Integer.parseInt(student[MARK]) >= 7) student[SURNAME] = student[SURNAME].toUpperCase();
                 buffer.append(student[SURNAME]);
                 buffer.append(", ");
                 buffer.append(student[MARK]);
+                //This is not a big deal, but for line separator character it is better to use System.getProperties("line.separator"); instead of "\n"
                 buffer.append("\n");
             });
         } catch (IOException e) {

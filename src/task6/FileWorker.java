@@ -9,13 +9,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class FileWorker {
+    //Does this really should be package-local privacy?
     String stringPath;
 
     FileWorker(String stringPath) {
         this.stringPath = stringPath;
     }
 
-
+    //and this?
     Pattern findPattern(Types type) {
         Pattern pattern;
         switch (type) {
@@ -37,6 +38,7 @@ public class FileWorker {
         return pattern;
     }
 
+    //privacy
     void printAllMatchingData(Pattern pattern) {
         String data = FileDataToStringMapper.map(stringPath);
         int counter = 0;
@@ -50,6 +52,7 @@ public class FileWorker {
     }
 
 
+    //privacy
     Types chooseType() {
         System.out.println("Please, write a type of data you are interested in. Available types: ");
         for (Types t : Types.values()) {

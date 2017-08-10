@@ -41,11 +41,13 @@ public class Task11 implements TaskInterface {
             return null;
         }
 
+        //This is not a big deal, but for line separator character it is better to use System.getProperties("line.separator"); instead of "\n"
         String[] lines = data.split("\n");
 
         for (int i = lines.length - n; i < lines.length; i++) {
             if (lines[i] == null || lines[i].isEmpty()) {
                 builder.append("...");
+                //This is not a big deal, but for line separator character it is better to use System.getProperties("line.separator"); instead of "\n"
                 builder.append("\n");
                 continue;
             }
@@ -62,6 +64,7 @@ public class Task11 implements TaskInterface {
                 builder.append(words.get(j));
                 builder.append(" ");
             }
+            //This is not a big deal, but for line separator character it is better to use System.getProperties("line.separator"); instead of "\n"
             builder.append("\n");
         }
         System.out.println(builder);

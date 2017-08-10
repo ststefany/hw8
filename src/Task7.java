@@ -6,7 +6,6 @@ import interfaces.TaskInterface;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.regex.Matcher;
@@ -29,6 +28,7 @@ public class Task7 implements TaskInterface {
                 counter++;
             }
 
+            //please, use curly brackets after "if"
             if (counter <= 0) return false;
 
             counter = (counter % 2 == 0) ? counter : counter - 1;

@@ -16,6 +16,7 @@ public class Task10 implements TaskInterface {
             return false;
         }
         System.out.println(result);
+        //This is not a big deal, but for line separator character it is better to use System.getProperties("line.separator"); instead of "\n"
         String[] strings = result.split("\n");
 
         Pattern pattern = Pattern.compile("[а-яА-ЯёЁa-zA-Z]+");
@@ -35,10 +36,12 @@ public class Task10 implements TaskInterface {
             while (matcher.find()) {
                 last = matcher.group();
             }
+            //Why not to use constant?
             s = s.replace(first, "THISSHOULDBELAST");
             s = s.replace(last, first);
             s = s.replace("THISSHOULDBELAST", last);
             buffer.append(s);
+            //This is not a big deal, but for line separator character it is better to use System.getProperties("line.separator"); instead of "\n"
             buffer.append("\n");
             matcher.reset();
         }
