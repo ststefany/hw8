@@ -16,7 +16,7 @@ public class Task15 implements TaskInterface {
 
         //This is not a big deal, but for line separator character it is better to use System.getProperties("line.separator"); instead of "\n"
         int[][] matrix = MatrixFromFileReader.read(stringPath, "\n");
-
+        //file can be empty or corrupted
         for (int[] a : matrix) {
             for (int i : a)
                 System.out.print(i + " ");

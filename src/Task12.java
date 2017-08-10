@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
 
 
 public class Task12 implements TaskInterface {
+    //privacy?
     final static String OUTPUT = "src/resources/Task12Output.txt";
 
 
@@ -54,6 +55,7 @@ public class Task12 implements TaskInterface {
             builder.append(" ");
         }
 
+        //and if there are no words in file? Just numbers, for example
         matcher = templatePattern.matcher(builder.toString());
 
         if (matcher.find()) {
