@@ -28,7 +28,7 @@ public class Task13 implements TaskInterface {
         return true;
     }
 
-    private static void writeDataInFile(Map<String, String> map, String stringPath) {
+    private void writeDataInFile(Map<String, String> map, String stringPath) {
 
         try (FileOutputStream stream = new FileOutputStream(new File(stringPath))) {
             System.setOut(new PrintStream(stream));

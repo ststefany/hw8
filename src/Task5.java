@@ -17,7 +17,7 @@ public class Task5 implements TaskInterface {
     public Boolean complete(String stringPath) {
         StringBuffer buffer = new StringBuffer();
 
-        try (Stream<String> stream = Files.lines(Paths.get(stringPath), StandardCharsets.UTF_8)) {
+        try (Stream<String> stream = Files.lines(Paths.get(stringPath))) {
             stream.forEach(s -> {
                 String[] student = s.split(",");
                 if (Integer.parseInt(student[MARK]) >= 7) student[SURNAME] = student[SURNAME].toUpperCase();

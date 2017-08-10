@@ -16,7 +16,7 @@ public class FileDataToStringMapper {
         StringBuffer buffer = new StringBuffer();
         String result = "";
 
-        try (Stream<String> stream = Files.lines(path, StandardCharsets.UTF_8)) {
+        try (Stream<String> stream = Files.lines(path)) {
             stream.forEach(s -> {
                 buffer.append(s);
                 buffer.append("\n");});

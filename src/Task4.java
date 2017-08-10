@@ -14,7 +14,7 @@ public class Task4 implements TaskInterface {
     public Boolean complete(String stringPath) {
         StringBuffer buffer = new StringBuffer();
 
-        try (Stream<String> stream = Files.lines(Paths.get(stringPath), StandardCharsets.UTF_8)) {
+        try (Stream<String> stream = Files.lines(Paths.get(stringPath))) {
             stream.forEach(s -> {
                 String[] strings = s.split(" ");
                 for (int i = 0; i < strings.length; i++) {

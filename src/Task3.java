@@ -13,8 +13,8 @@ import java.util.stream.Stream;
 public class Task3 implements TaskInterface {
 
     public Boolean complete(String stringPath) {
-        //Charset
-        try (Stream<String> stream = Files.lines(Paths.get("src/Task3.java"), StandardCharsets.UTF_8);
+
+        try (Stream<String> stream = Files.lines(Paths.get("src/Task3.java"));
              FileWriter writer = new FileWriter(stringPath)) {
 
             StringBuffer s = new StringBuffer();
@@ -23,14 +23,7 @@ public class Task3 implements TaskInterface {
                 s.append("\n");
             });
 
-            //You could use StringBuffer.reverse() instead :-)
-            //Like this: char[] array = s.reverse().toString().toCharArray();
-            char[] array = s.toString().toCharArray();
-            for (int i = 0; i < array.length / 2; i++) {
-                char c = array[array.length - i - 1];
-                array[array.length - i - 1] = array[i];
-                array[i] = c;
-            }
+            char[] array = s.reverse().toString().toCharArray();
             writer.write(array);
             writer.flush();
         } catch (IOException e) {

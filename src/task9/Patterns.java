@@ -1,5 +1,5 @@
 package task9;
 
-public class Patterns {
+class Patterns {
 static final String COMMENTS_PATTERN = "(/\\*([^*]|[\\r\\n]|(\\*+([^*/]|[\\r\\n])))*\\*+/)|(//.*)";
 }

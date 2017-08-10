@@ -13,7 +13,7 @@ public class Task14 implements TaskInterface {
         return result;
     }
 
-    private static int[][] saveSquareMatrixAsArray(String stringPath) {
+    private int[][] saveSquareMatrixAsArray(String stringPath) {
         int[][] matrix = MatrixFromFileReader.read(stringPath, "\\s|\\n");
         for (int[] a : matrix) {
             for (int i : a)
@@ -23,7 +23,7 @@ public class Task14 implements TaskInterface {
         return matrix;
     }
 
-    private static int[][] transMatrix(int[][] matrix) {
+    private int[][] transMatrix(int[][] matrix) {
         if (matrix == null) return null;
 
         int[][] resultMatrix = new int[matrix.length][matrix.length];

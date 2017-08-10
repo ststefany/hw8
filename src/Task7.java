@@ -21,7 +21,7 @@ public class Task7 implements TaskInterface {
         String result = "";
         int counter = 0;
 
-        try (Stream<String> stream = Files.lines(Paths.get(stringPath), StandardCharsets.UTF_8)) {
+        try (Stream<String> stream = Files.lines(Paths.get(stringPath))) {
             stream.forEach(buffer::append);
             result = buffer.toString();
             Matcher matcher = pattern.matcher(result);

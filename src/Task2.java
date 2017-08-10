@@ -16,10 +16,7 @@ public class Task2 implements TaskInterface {
     public Boolean complete(String stringPath) {
         StringBuffer buffer = new StringBuffer();
 
-        //Again question about charset :-)
-        try (Stream<String> stream = Files.lines(Paths.get(stringPath), StandardCharsets.UTF_8)
-        //brackets on the new line?
-        ) {
+        try (Stream<String> stream = Files.lines(Paths.get(stringPath))) {
             stream.forEach(s -> {
                 String z = s.replace("public", "private");
                 buffer.append(z);

@@ -17,7 +17,7 @@ public class Task8 implements TaskInterface {
         StringBuffer buffer = new StringBuffer();
         String result = "";
 
-        try (Stream<String> stream = Files.lines(Paths.get(stringPath), StandardCharsets.UTF_8)) {
+        try (Stream<String> stream = Files.lines(Paths.get(stringPath))) {
             stream.forEach(s -> {
                 buffer.append(s);
                 buffer.append("\n");

@@ -35,7 +35,7 @@ public class Task12 implements TaskInterface {
         return true;
     }
 
-    static void findWordsWithTemplate(String stringPath, String template) {
+    private void findWordsWithTemplate(String stringPath, String template) {
         String data = FileDataToStringMapper.map(stringPath);
         if (data == null || data.isEmpty()) {
             System.err.println("File is empty");

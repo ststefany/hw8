@@ -12,7 +12,7 @@ public class Task15 implements TaskInterface {
     }
 
 
-    private static int[][] saveSquareMatrixAsArray(String stringPath) {
+    private int[][] saveSquareMatrixAsArray(String stringPath) {
 
         int[][] matrix = MatrixFromFileReader.read(stringPath, "\n");
 
@@ -24,7 +24,7 @@ public class Task15 implements TaskInterface {
         return matrix;
     }
 
-    private static int[][] turnMatrixFor90Degrees(int[][] matrix) {
+    private int[][] turnMatrixFor90Degrees(int[][] matrix) {
         int[][] resultMatrix = new int[matrix.length][matrix.length];
 
         for (int i = 0; i < matrix.length; i++) {

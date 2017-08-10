@@ -30,7 +30,7 @@ public class Task11 implements TaskInterface {
         return saveMWordsInNLines(words, lines, stringPath);
     }
 
-    static String saveMWordsInNLines(int m, int n, String stringPath) {
+    private String saveMWordsInNLines(int m, int n, String stringPath) {
         StringBuilder builder = new StringBuilder();
         Pattern word = Pattern.compile("[а-яА-ЯёЁa-zA-Z]+");
 
