@@ -14,22 +14,23 @@ public class Task14 implements TaskInterface {
     }
 
     private int[][] saveSquareMatrixAsArray(String stringPath) {
-        //This is not a big deal, but for line separator character it is better to use System.getProperties("line.separator"); instead of "\n"
         int[][] matrix = MatrixFromFileReader.read(stringPath, "\\s|\\n");
-        //if the was empty? or it was corrupted?
+
+        if (matrix == null || matrix.length == 0) {
+            System.err.println("Impossible to complete the task");
+            return null;
+        }
+
         for (int[] a : matrix) {
-            //curly brackets
-            for (int i : a)
+            for (int i : a) {
                 System.out.print(i + " ");
+            }
             System.out.println();
         }
         return matrix;
     }
 
     private int[][] transMatrix(int[][] matrix) {
-        //curly brackets
-        if (matrix == null) return null;
-
         int[][] resultMatrix = new int[matrix.length][matrix.length];
 
         for (int i = 0; i < matrix.length; ++i)

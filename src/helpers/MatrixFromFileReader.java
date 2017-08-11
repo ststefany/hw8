@@ -16,7 +16,7 @@ public class MatrixFromFileReader {
         double size = Math.sqrt(data.length);
         int matrixSize = (int) size;
 
-        if (size-matrixSize != 0) {
+        if (size - matrixSize != 0) {
             System.err.println("Invalid input data");
             return null;
         }
@@ -39,5 +39,4 @@ public class MatrixFromFileReader {
         return resultArray;
 
     }
-
 }

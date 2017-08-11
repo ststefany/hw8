@@ -10,6 +10,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+import static helpers.SpecialCharacters.LINE_SEPARATOR;
+import static helpers.SpecialCharacters.DOUBLE_SPACE;
+import static helpers.SpecialCharacters.SPACE;
+
 public class Task8 implements TaskInterface {
 
     public Boolean complete(String stringPath) {
@@ -19,15 +23,12 @@ public class Task8 implements TaskInterface {
         try (Stream<String> stream = Files.lines(Paths.get(stringPath))) {
             stream.forEach(s -> {
                 buffer.append(s);
-                //This is not a big deal, but for line separator character it is better to use System.getProperties("line.separator"); instead of "\n"
-                buffer.append("\n");
+                buffer.append(LINE_SEPARATOR.getValue());
             });
             result = buffer.toString();
-            //please, use curly brackets after "while".
-            //You could use constant for ".."
-            while (result.contains("  "))
-                result = result.replace("  ", " ");
-
+            while (result.contains(DOUBLE_SPACE.getValue())) {
+                result = result.replace(DOUBLE_SPACE.getValue(), SPACE.getValue());
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

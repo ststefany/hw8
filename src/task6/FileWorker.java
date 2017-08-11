@@ -8,16 +8,14 @@ import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class FileWorker {
-    //Does this really should be package-local privacy?
-    String stringPath;
+class FileWorker {
+    private String stringPath;
 
     FileWorker(String stringPath) {
         this.stringPath = stringPath;
     }
 
-    //and this?
-    Pattern findPattern(Types type) {
+    public Pattern findPattern(Types type) {
         Pattern pattern;
         switch (type) {
             case DOUBLE:
@@ -38,8 +36,7 @@ public class FileWorker {
         return pattern;
     }
 
-    //privacy
-    void printAllMatchingData(Pattern pattern) {
+    public void printAllMatchingData(Pattern pattern) {
         String data = FileDataToStringMapper.map(stringPath);
         int counter = 0;
         Matcher matcher = pattern.matcher(data);
@@ -52,8 +49,7 @@ public class FileWorker {
     }
 
 
-    //privacy
-    Types chooseType() {
+    public Types chooseType() {
         System.out.println("Please, write a type of data you are interested in. Available types: ");
         for (Types t : Types.values()) {
             System.out.println(t);

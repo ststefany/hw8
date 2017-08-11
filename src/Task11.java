@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static helpers.SpecialCharacters.LINE_SEPARATOR;
+
 public class Task11 implements TaskInterface {
 
     public String complete(String stringPath) {
@@ -41,14 +43,12 @@ public class Task11 implements TaskInterface {
             return null;
         }
 
-        //This is not a big deal, but for line separator character it is better to use System.getProperties("line.separator"); instead of "\n"
-        String[] lines = data.split("\n");
+        String[] lines = data.split(LINE_SEPARATOR.getValue());
 
         for (int i = lines.length - n; i < lines.length; i++) {
             if (lines[i] == null || lines[i].isEmpty()) {
                 builder.append("...");
-                //This is not a big deal, but for line separator character it is better to use System.getProperties("line.separator"); instead of "\n"
-                builder.append("\n");
+                builder.append(LINE_SEPARATOR.getValue());
                 continue;
             }
             Matcher matcher = word.matcher(lines[i]);
@@ -64,8 +64,7 @@ public class Task11 implements TaskInterface {
                 builder.append(words.get(j));
                 builder.append(" ");
             }
-            //This is not a big deal, but for line separator character it is better to use System.getProperties("line.separator"); instead of "\n"
-            builder.append("\n");
+            builder.append(LINE_SEPARATOR.getValue());
         }
         System.out.println(builder);
 

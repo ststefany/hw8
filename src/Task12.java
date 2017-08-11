@@ -14,8 +14,7 @@ import java.util.regex.Pattern;
 
 
 public class Task12 implements TaskInterface {
-    //privacy?
-    final static String OUTPUT = "src/resources/Task12Output.txt";
+    private final static String OUTPUT = "src/resources/Task12Output.txt";
 
 
     public Boolean complete(String stringPath) {
@@ -55,8 +54,14 @@ public class Task12 implements TaskInterface {
             builder.append(" ");
         }
 
-        //and if there are no words in file? Just numbers, for example
-        matcher = templatePattern.matcher(builder.toString());
+        String result = builder.toString();
+
+        if (result.isEmpty()) {
+            System.out.println("File contains no words");
+            return;
+        }
+
+        matcher = templatePattern.matcher(result);
 
         if (matcher.find()) {
             StringToFileWriter.write(OUTPUT, matcher.group());

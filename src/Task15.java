@@ -5,6 +5,8 @@
 import helpers.MatrixFromFileReader;
 import interfaces.TaskInterface;
 
+import static helpers.SpecialCharacters.LINE_SEPARATOR;
+
 public class Task15 implements TaskInterface {
 
     public int[][] complete(String stringPath) {
@@ -14,9 +16,13 @@ public class Task15 implements TaskInterface {
 
     private int[][] saveSquareMatrixAsArray(String stringPath) {
 
-        //This is not a big deal, but for line separator character it is better to use System.getProperties("line.separator"); instead of "\n"
-        int[][] matrix = MatrixFromFileReader.read(stringPath, "\n");
-        //file can be empty or corrupted
+        int[][] matrix = MatrixFromFileReader.read(stringPath, LINE_SEPARATOR.getValue());
+
+        if (matrix == null || matrix.length == 0) {
+            System.err.println("Impossible to complete the task");
+            return null;
+        }
+
         for (int[] a : matrix) {
             for (int i : a)
                 System.out.print(i + " ");
@@ -34,17 +40,12 @@ public class Task15 implements TaskInterface {
             }
         }
 
-
         for (int[] i : resultMatrix) {
             for (int j : i)
                 System.out.print(j + " ");
             System.out.println();
         }
 
-
         return resultMatrix;
-
     }
-
-
 }

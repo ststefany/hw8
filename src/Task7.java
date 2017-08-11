@@ -28,8 +28,9 @@ public class Task7 implements TaskInterface {
                 counter++;
             }
 
-            //please, use curly brackets after "if"
-            if (counter <= 0) return false;
+            if (counter <= 0) {
+                return false;
+            }
 
             counter = (counter % 2 == 0) ? counter : counter - 1;
             matcher.reset(result);

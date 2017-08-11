@@ -5,13 +5,15 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
+
+import static helpers.SpecialCharacters.LINE_SEPARATOR;
 /*5. В файле, содержащем фамилии студентов и их оценки, записать прописными буквами фамилии тех
 студентов, которые имеют средний балл более “7”.*/
 
 public class Task5 implements TaskInterface {
-    //privacy modifiers?
-    final static int SURNAME = 0;
-    final static int MARK = 1;
+    private final static int SURNAME = 0;
+    private final static int MARK = 1;
+    private final static int CRITICAL_NUMBER = 7;
 
 
     public Boolean complete(String stringPath) {
@@ -20,14 +22,12 @@ public class Task5 implements TaskInterface {
         try (Stream<String> stream = Files.lines(Paths.get(stringPath))) {
             stream.forEach(s -> {
                 String[] student = s.split(",");
-                //if you are already using constants for field indices, why do you use magic numbers for marks?
-                //please, do not omit curly brackets after "if"...
-                if (Integer.parseInt(student[MARK]) >= 7) student[SURNAME] = student[SURNAME].toUpperCase();
+                if (Integer.parseInt(student[MARK]) >= CRITICAL_NUMBER) {
+                    student[SURNAME] = student[SURNAME].toUpperCase(); }
                 buffer.append(student[SURNAME]);
                 buffer.append(", ");
                 buffer.append(student[MARK]);
-                //This is not a big deal, but for line separator character it is better to use System.getProperties("line.separator"); instead of "\n"
-                buffer.append("\n");
+                buffer.append(LINE_SEPARATOR.getValue());
             });
         } catch (IOException e) {
             e.printStackTrace();

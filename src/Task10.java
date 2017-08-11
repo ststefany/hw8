@@ -6,7 +6,10 @@ import interfaces.TaskInterface;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static helpers.SpecialCharacters.LINE_SEPARATOR;
+
 public class Task10 implements TaskInterface {
+    private static final String PLACEHOLDER = "This should be changed";
 
     public Boolean complete(String stringPath) {
 
@@ -16,8 +19,7 @@ public class Task10 implements TaskInterface {
             return false;
         }
         System.out.println(result);
-        //This is not a big deal, but for line separator character it is better to use System.getProperties("line.separator"); instead of "\n"
-        String[] strings = result.split("\n");
+        String[] strings = result.split(LINE_SEPARATOR.getValue());
 
         Pattern pattern = Pattern.compile("[а-яА-ЯёЁa-zA-Z]+");
 
@@ -36,13 +38,11 @@ public class Task10 implements TaskInterface {
             while (matcher.find()) {
                 last = matcher.group();
             }
-            //Why not to use constant?
-            s = s.replace(first, "THISSHOULDBELAST");
+            s = s.replace(first, PLACEHOLDER);
             s = s.replace(last, first);
-            s = s.replace("THISSHOULDBELAST", last);
+            s = s.replace(PLACEHOLDER, last);
             buffer.append(s);
-            //This is not a big deal, but for line separator character it is better to use System.getProperties("line.separator"); instead of "\n"
-            buffer.append("\n");
+            buffer.append(LINE_SEPARATOR.getValue());
             matcher.reset();
         }
 

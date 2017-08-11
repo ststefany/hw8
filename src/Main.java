@@ -1,14 +1,11 @@
-import task6.Task6;
-import task9.Task9;
-
-import java.io.File;
+import helpers.SpecialCharacters;
 
 public class Main {
     public static void main(String[] args) {
 
+        System.out.println(SpecialCharacters.LINE_SEPARATOR.getValue());
 
-
-        new Task1().complete("src/resources/Task1.txt");
+        /*new Task1().complete("src/resources/Task1.txt");
         new Task2().complete("src/Task2.java");
         new Task3().complete("src/resources/Task3Output.txt");
         new Task4().complete("src/Task4.java");
@@ -23,7 +20,7 @@ public class Main {
         new Task13().complete("src/resources/Task13Output.txt");
         new Task14().complete("src/resources/Task14input.txt");
         new Task15().complete("src/resources/Task15Input.txt");
-        new Task16().complete("");
+        new Task16().complete("");*/
 
     }
 
